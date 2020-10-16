@@ -3,7 +3,7 @@ use Mix.Config
 # Configure your database
 config :telegram_bot, TelegramBot.Repo,
   username: "root",
-  password: "",
+  password: "1111",
   database: "telegram_bot_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,

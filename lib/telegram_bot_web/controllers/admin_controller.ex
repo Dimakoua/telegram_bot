@@ -25,36 +25,4 @@ defmodule TelegramBotWeb.AdminController do
     def chat(conn, _params) do
         render(conn, "chat.html",  token: get_csrf_token())
     end
-
-    def send_message(conn, %{"text" => message}) do
-        Nadia.send_message(590575618, message, [reply_markup: %Nadia.Model.InlineKeyboardMarkup{
-          inline_keyboard: [
-            [
-              %{
-                callback_data: "/set_language en",
-                text: "English",
-              },
-              %{
-                callback_data: "/set_language ru",
-                text: "Russian",
-              },
-            ]
-          ],
-        }])
-        render(conn, "chat.html",  token: get_csrf_token())
-    end
-
-    def test(conn, _params) do
-      # text = "text(1)"
-      # param1 <>"(" <> param2 <>")" = text
-      # IO.inspect param1
-      # IO.inspect param2
-      text = "Регіна 12грн (0)"
-      query = from u in "category",
-          select: %{"text" => u.name, "callback_data" => u.id}
-      category = Repo.all(query)
-      |> Enum.map(fn %{"text" => name, "callback_data" => id} -> %{"text" => name, "callback_data" => "/category#{id}"} end) 
-    # Nadia.send_message(chat_id, "sdsd")
-      conn |> json(category)
-    end
   end
