@@ -1,0 +1,6 @@
+
+<form action="/setwebhook" method="post">
+  <input type="text" name="url" id="">
+  <input type="hidden" value="<%= @token %>" name="_csrf_token"/>
+  <button type="submit">OK</button>
+</form>
